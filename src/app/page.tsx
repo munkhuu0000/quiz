@@ -1,9 +1,16 @@
-import { Login } from "./_components/Login";
+import { Show } from "@clerk/nextjs";
+import { HomeLanding } from "./_components/HomeLanding";
+import { QuizWorkbench } from "./_components/QuizWorkbench";
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-5">
-      <Login />
-    </div>
+    <>
+      <Show when="signed-out">
+        <HomeLanding />
+      </Show>
+      <Show when="signed-in">
+        <QuizWorkbench />
+      </Show>
+    </>
   );
 }

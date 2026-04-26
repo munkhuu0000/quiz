@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "quiz5",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-04-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "quiz5-db",
+      "database_id": "8960ed39-f598-4169-af4d-378e8a37dce7",
+      "preview_database_id": "8960ed39-f598-4169-af4d-378e8a37dce7",
+      "migrations_dir": "drizzle/migrations",
+    },
+  ],
+}
