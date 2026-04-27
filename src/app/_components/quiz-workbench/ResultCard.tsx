@@ -5,7 +5,6 @@ type ResultCardProps = {
   score: number;
   total: number;
   items: ReviewItem[];
-  isSavingAndLeaving: boolean;
   onRestart: () => void;
   onSaveAndLeave: () => void;
 };
@@ -14,7 +13,6 @@ export function ResultCard({
   score,
   total,
   items,
-  isSavingAndLeaving,
   onRestart,
   onSaveAndLeave,
 }: ResultCardProps) {
@@ -84,10 +82,9 @@ export function ResultCard({
         <button
           type="button"
           onClick={onSaveAndLeave}
-          disabled={isSavingAndLeaving}
-          className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800 disabled:cursor-progress disabled:bg-slate-400"
+          className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800"
         >
-          {isSavingAndLeaving ? "Saving..." : "Save and leave"}
+          Save and leave
         </button>
       </div>
     </section>

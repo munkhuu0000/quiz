@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { ArticleComposer } from "./quiz-workbench/ArticleComposer";
 import { ArticleContentModal } from "./quiz-workbench/ArticleContentModal";
 import {
@@ -43,8 +43,6 @@ export function QuizWorkbench() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [isGeneratingSummary, setIsGeneratingSummary] = useState(false);
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
-  const [isSavingAndLeaving, setIsSavingAndLeaving] = useState(false);
-  const isSavingAndLeavingRef = useRef(false);
   const [isPending, startTransition] = useTransition();
 
   const selectedArticle = useMemo(
@@ -143,11 +141,6 @@ export function QuizWorkbench() {
   };
 
   const handleSaveAndLeave = async () => {
-    if (isSavingAndLeavingRef.current) return;
-
-    isSavingAndLeavingRef.current = true;
-    setIsSavingAndLeaving(true);
-
     try {
       const articleId = await persistActiveArticle();
 
@@ -161,9 +154,6 @@ export function QuizWorkbench() {
       }
     } catch (error) {
       console.error("Save before leave failed:", error);
-    } finally {
-      isSavingAndLeavingRef.current = false;
-      setIsSavingAndLeaving(false);
     }
 
     startTransition(() => {
@@ -288,7 +278,6 @@ export function QuizWorkbench() {
         score={score}
         total={activeArticle.quiz.length}
         items={reviewItems}
-        isSavingAndLeaving={isSavingAndLeaving}
         onRestart={handleRestartQuiz}
         onSaveAndLeave={handleSaveAndLeave}
       />
