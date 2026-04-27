@@ -80,7 +80,7 @@ export function HomeLanding() {
               <h1 className="max-w-2xl text-4xl font-black leading-[1.12] tracking-[-0.03em] text-[#0f1b52] sm:text-5xl lg:text-[4.25rem]">
                 5 асуулттай <span className="text-[#3e57ff]">quiz-ээ</span>
                 <br />
-                хэдхэн секундэд <span className="text-[#4a5cff]">үүсгэ</span>
+                хэдхэн секундэд <span className="text-[#4a5cff]">үүсгэнэ.</span>
               </h1>
               <p className="mt-8 max-w-xl text-lg leading-9 text-[#52608f] sm:text-[2rem] sm:leading-[1.7]">
                 Хичээлийн сэдвээ оруулаад автоматаар 5 асуулттай quiz бэлдээрэй.
