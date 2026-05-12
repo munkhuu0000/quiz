@@ -2,11 +2,32 @@
 
 import { UserButton, useAuth, useClerk } from "@clerk/nextjs";
 
-type LoginProps = { className?: string };
+type LoginProps = {
+  className?: string;
+  variant?: "default" | "quiz";
+};
 
-export function Login({ className = "" }: LoginProps) {
+export function Login({ className = "", variant = "default" }: LoginProps) {
   const { isLoaded, isSignedIn } = useAuth();
   const { openSignIn, openSignUp } = useClerk();
+
+  if (variant === "quiz") {
+    return (
+      <div className={`flex items-center ${className}`}>
+        {isLoaded && isSignedIn ? (
+          <UserButton />
+        ) : (
+          <button
+            type="button"
+            onClick={() => openSignIn({ fallbackRedirectUrl: "/" })}
+            className="rounded-full border-4 border-black bg-[#d8f09a] px-7 py-2.5 text-[1.05rem] font-black text-black shadow-[0_5px_0_#000] transition hover:-translate-y-0.5 hover:bg-[#e4f8aa]"
+          >
+            Sign in
+          </button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className={`flex flex-wrap items-center gap-4 ${className}`}>
